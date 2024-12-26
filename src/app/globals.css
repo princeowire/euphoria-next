@@ -1,21 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+* {
+  font-family: "Nunito Sans", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.footer p {
+  font-size: smaller;
+  color: #d1d1d1;
+}
+
+.swiper-button-next, 
+.swiper-button-prev {
+  color: white;
+}
+
+.swiper-button-next.swiper-button-disabled, 
+.swiper-button-prev.swiper-button-disabled {
+    opacity: 0;
+}
+
+.swiper-scrollbar.swiper-scrollbar-horizontal {
+  max-width: 200px;
+  min-height: 8px;
+  vertical-align: middle;
+  transform: translate(-50%, 50%);
+  margin: auto;
+  left: 50%;
+  background-color: #ffffff6d;
+  bottom: 10px;
+}
+
+.swiper-scrollbar-drag {
+  background-color: #fff;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: white;
+}
+
+.swiper-pagination-bullet {
+  background-color: rgba(146, 0, 0, 0.718);
+}
+
+
+.hawaliaan-bg {
+  background-image: url("/assets/Hawaiian Shirts.webp");
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.printed-bg {
+  background-image: url("/assets/printed t-shirt.webp");
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.cargo-bg {
+  background-image: url("/assets/cargo joggers.png");
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.urban-bg {
+  background-image: url("/assets/flat urban.webp");
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+.oversized-bg {
+  background-image: url("/assets/flat oversized.png");
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 768px) {
+  .link {
+    display: none;
+  }
+
+  .link.show {
+    display: flex;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+@layer components {
+  .link > a {
+    color: #807D7E;
+  }
+
+  .link > a:hover {
+    font-size: larger;
+    font-weight: bold;
+  }   
+} 
