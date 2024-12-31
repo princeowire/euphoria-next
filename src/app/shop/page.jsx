@@ -6,6 +6,8 @@ import { Nav } from "@/components/nav";
 import { BigSaving } from "@/components/big-saving";
 import { MiniStoreMen } from "@/components/mini-store-men";
 import { MiniStoreWmen } from "@/components/mini-store-wmen";
+import { Feedback } from "@/components/feedback";
+import Limelights from "@/components/limelight";
 
 import slideTwo from '../../../public/assets/yellow.webp';
 import purple from '../../../public/assets/purple.webp';
@@ -20,12 +22,12 @@ import hAndm from '../../../public/assets/h and m.png';
 import levis from '../../../public/assets/levis.png';
 import usPolo from '../../../public/assets/us polo.png';
 import pumaLogo from '../../../public/assets/puma.png';
+import { Phooter } from "@/components/footer";
+
 
 export default function Shop() {
   return(
     <div>
-
-      <Nav />
 
       <Slider />
 
@@ -162,9 +164,9 @@ export default function Shop() {
       </section>
 
       <section className="px-16 py-4 max-md:p-4">
-        
+        <Limelights />
+        <Feedback />
       </section>
-
     </div>
   )
 }
