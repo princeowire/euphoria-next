@@ -24,7 +24,7 @@ export const BigSaving = () => {
               </div>
 
               <button className="border py-1 px-3 rounded-sm ">
-                Shop Now
+                <a href="/product">Shop Now</a>
               </button>
             </div>
           </div>
@@ -52,7 +52,7 @@ export const BigSaving = () => {
               </div>
 
               <button className="border py-1 px-3 rounded-sm ">
-                Shop Now
+                <a href="/product">Shop Now</a>
               </button>
             </div>
           </div>
@@ -73,7 +73,7 @@ export const BigSaving = () => {
               </div>
 
               <button className="border border-off-black py-1 px-3 rounded-sm text-off-black">
-                Shop Now
+                <a href="/product">Shop Now</a>
               </button>
             </div>
           </div>
@@ -97,7 +97,7 @@ export const BigSaving = () => {
               </div>
 
               <button className="border border-off-black py-1 px-3 rounded-sm text-off-black">
-                Shop Now
+                <a href="/product">Shop Now</a>
               </button>
             </div>
           </div>
@@ -118,7 +118,7 @@ export const BigSaving = () => {
               </div>
 
               <button className="border border-off-black py-1 px-3 rounded-sm text-off-black">
-                Shop Now
+                <a href="/product">Shop Now</a>
               </button>
             </div>
           </div>

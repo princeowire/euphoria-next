@@ -6,13 +6,21 @@ export default function ProductDetail({ product }) {
     return <div>Product not found!</div>;
   }
 
+  const pathname = usePathname()
+
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-      <Image src={urlFor(product.image).url()} alt={product.name} width={500} height={500} />
-      <p className="text-lg mt-2">${product.price}</p>
-      <p className="text-gray-600 mt-4">{product.description}</p>
-      <p> hello world </p>
+    <div className="bg-gray-100 p-4">
+      <div className="product-image">
+        <Image src={urlFor(product.image).url()} alt={product.name} width={282} height={370} />
+      </div>
+      <div>
+        <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
+        <p className="text-xl text-gray-700 mb-4">${product.price}</p>
+        {product.description && (
+          <p className="text-base text-red-600">{product.description}</p>
+        )}
+        <p className="text-base text-yellow-600">hello world</p>
+      </div>
     </div>
   );
 }

@@ -30,7 +30,7 @@ export const MiniStoreWmen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href=""><Image src={rightArrow} alt="" /></a>
+                <a href="/product"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
@@ -44,7 +44,7 @@ export const MiniStoreWmen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href=""><Image src={rightArrow} alt="" /></a>
+                <a href="/product"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
@@ -58,7 +58,7 @@ export const MiniStoreWmen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href=""><Image src={rightArrow} alt="" /></a>
+                <a href="/product"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
@@ -72,7 +72,7 @@ export const MiniStoreWmen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href=""><Image src={rightArrow} alt="" /></a>
+                <a href="/product"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 

@@ -1,5 +1,3 @@
-import { Phooter } from '@/components/footer';
-import { Nav } from '@/components/nav';
 import { client, urlFor } from '@/lib/sanity';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -21,11 +19,11 @@ export default async function ProductPage() {
   }
 
   if (!products || products.length === 0) {
-    return <div className='w-full m-auto flex items-center justify-center'>No products available!</div>;
+    return <div className='w-full m-auto flex items-center justify-center h-[230px]'>No products available!</div>;
   }
 
   return (
-    <div>
+    <div> 
 
       <div className="px-8 py-4 gap-6 flex items-center justify-center flex-wrap">
 

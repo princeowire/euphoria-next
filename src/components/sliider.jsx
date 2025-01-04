@@ -26,7 +26,7 @@ export const Slider = () => {
           <p className='text-8xl font-extrabold max-w-screen-md max-sm:text-3xl'>Summer Value Pack</p>
           <p className="text-2xl">Cool / Colorful / Comfy</p>
 
-          <button className='rounded-md bg-white text-blue-950 font-bold px-8 py-2 w-fit'>Shop Now</button>
+          <button className='rounded-md bg-white text-blue-950 font-bold px-8 py-2 w-fit'><a href="/product">Shop Now</a></button>
         </div>
     </SwiperSlide>
 
@@ -37,7 +37,7 @@ export const Slider = () => {
           <p className='text-8xl font-extrabold max-w-screen-md max-sm:text-3xl'>Winter Value Pack</p>
           <p className="text-2xl">Cool / Colorful / Comfy</p>
 
-          <button className='rounded-md bg-white text-blue-950 font-bold px-8 py-2 w-fit'>Shop Now</button>
+          <button className='rounded-md bg-white text-blue-950 font-bold px-8 py-2 w-fit'><a href="/product">Shop Now</a></button>
         </div>
     </SwiperSlide>
 

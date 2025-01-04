@@ -45,7 +45,7 @@ export default function Shop() {
             </div>
 
             <div className='w-fit'>
-              <p>Explore items</p>
+              <a href="/product">Explore items</a>
               <hr />
             </div>
           </div>
@@ -64,7 +64,7 @@ export default function Shop() {
             </div>
 
             <div className='w-fit'>
-              <p>Explore items</p>
+              <a href="/product">Explore items</a>
               <hr />
             </div>
           </div>
@@ -132,7 +132,7 @@ export default function Shop() {
             <div className="absolute flex flex-col gap-3 text-white top-0 p-14 max-md:p-4 my-auto">
               <h3 className='text-4xl font-bold'>WE MADE YOUR EVERYDAY FASHION BETTER!</h3>
               <p className='max-w-96 text-lg max-sm:hidden'>In our journey to improve everyday fashion, euphoria presents EVERYDAY wear range - Comfortable & Affordable fashion 24/7</p>
-              <button className='w-fit rounded-xl bg-off-white text-black px-7 py-2 max-sm:hidden'>Shop Now</button>
+              <button className='w-fit rounded-xl bg-off-white text-black px-7 py-2 max-sm:hidden'><a href="/product">Shop Now</a></button>
             </div>
 
           </div>
