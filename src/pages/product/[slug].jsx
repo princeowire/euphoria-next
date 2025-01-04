@@ -6,8 +6,6 @@ export default function ProductDetail({ product }) {
     return <div>Product not found!</div>;
   }
 
-  const pathname = usePathname()
-
   return (
     <div className="bg-gray-100 p-4">
       <div className="product-image">
