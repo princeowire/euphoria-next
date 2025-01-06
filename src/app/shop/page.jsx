@@ -147,7 +147,7 @@ export default function Shop() {
       </section>
 
       <section className="px-16 py-4 max-md:p-4">
-        <div className='rounded-lg text-off-white flex gap-2 flex-col items-center justify-center bg-off-black p-5'>
+        <div className='rounded-lg text-off-white flex gap-2 flex-col items-center text-white justify-center bg-off-black p-5'>
 
           <h1 className='text-5xl font-extrabold'>Top Brand Deal</h1>
           <p>Up To <b className='text-contrast-yellow'>60%</b> off on brands</p>
