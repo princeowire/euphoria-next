@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import searchIcon from "../../public/assets/search.png" 
 import cart from "../../public/assets/cart.png";
-import like from "../../public/assets/like.png";
 import logo from "../../public/assets/Logo.webp";
 import profileIcon from "../../public/assets/profile icon.png";
 
@@ -29,6 +28,10 @@ export const UserNav = () => {
             Shop
           </a>
 
+          <a href="/products" className="text-black font-bold text-1xl">
+            Product
+          </a>
+
           <a href="" className="text-black font-bold text-1xl">
             Men
           </a>
@@ -37,13 +40,6 @@ export const UserNav = () => {
             Women
           </a>
 
-          <a href="" className="text-black font-bold text-1xl">
-            Combos
-          </a>
-
-          <a href="" className="text-black font-bold text-1xl">
-            Joggers
-          </a>
         </div>
 
         <div className="search-bar flex rounded-md align-middle items-center justify-center px-4 bg-off-white">
@@ -54,19 +50,11 @@ export const UserNav = () => {
         </div>
 
         <div className="nav-profile flex gap-2">
-          <a href="">
-            <Image src={like} alt="" />
-          </a>
-          {/* <div>
-			<button className="bg-yellow-300 text-white rounded-xl p-4" onClick={() => {
-        setCarts(carts + 1)
-      }}>Add to cart</button>
-			</div> */}
           <a href="/profile">
             <Image src={profileIcon} alt="" />
           </a>
           <div className="relative">
-            <a href="">
+            <a href="/cart">
               <Image src={cart} alt="" />
             </a>
             <p className="h-6 w-6 flex items-center justify-center absolute top-0 left-8 rounded-full bg-red-600 text-white font-semibold text-lg">{carts}</p>
