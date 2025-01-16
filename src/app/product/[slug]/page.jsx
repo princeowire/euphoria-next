@@ -19,15 +19,17 @@ export default async function ProductDetail({ params }) {
   }
 
   return (
-    <div className="bg-gray-100 p-4">
+    <div className="bg-gray-100 px-4 flex">
+
       <div className="product-image">
         {product.image ? (
           <Image
             src={urlFor(product.image).url()}
             alt={product.name}
-            width={282}
-            height={370}
+            width={382}
+            height={470}
             loading="lazy"
+            className="object-cover"
           />
         ) : (
           <div className="bg-gray-200 w-72 h-96 flex items-center justify-center">
@@ -35,6 +37,7 @@ export default async function ProductDetail({ params }) {
           </div>
         )}
       </div>
+
       <div>
         <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
         <p className="text-xl text-gray-700 mb-4">${product.price}</p>

@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import { CartProvider } from '@/app/CartContext';
 import Nav from "@/components/nav";
+import { Toaster } from 'react-hot-toast';
 import { Phooter } from '@/components/footer';
 import "./globals.css";
 
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
       >
         <CartProvider>
           <Nav />
+          <Toaster position="top-right" reverseOrder={false} />
           {children}
           <Phooter />
         </CartProvider>

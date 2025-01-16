@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import spin from '../../../public/assets/spinner.svg';
 import { useCart } from '../CartContext';
+import { toast } from 'react-hot-toast';
 
 const ProductPage = () => {
   const [products, setProducts] = useState([]);
@@ -48,18 +49,29 @@ const ProductPage = () => {
     <div>
       <div className="px-8 py-4 gap-6 flex items-center justify-center flex-wrap">
         {products.map((product) => (
-          <div key={product.slug.current} className="flex flex-col gap-2 max-sm:w-96 cursor-pointer">
+          <div key={product.slug.current} className="flex flex-col gap-2 max-sm:w-full cursor-pointer">
             <Link href={`/product/${product.slug.current}`}>
-              <Image src={urlFor(product.image).url()} alt={product.name} width={282} height={370} />
+              <Image className="w-full" src={urlFor(product.image).url()} alt={product.name} width={282} height={370} />
             </Link>
             <div className="flex items-center justify-between relative">
               <div>
                 <p className="text-1xl font-bold truncate max-w-48">{product.name}</p>
                 <p className="text-off-gray">{product.description}</p>
               </div>
-              <div >
+              <div>
                 <p className="bg-off-white px-3 py-1 rounded-lg">${product.price}</p>
-                <button onClick={() => addToCart(product)} className="w-36 bg-eu-purple text-white px-3 py-1 rounded-md absolute top-[-50px] right-3">
+                <button
+                  onClick={() => {
+                    addToCart({
+                      slug: product.slug,
+                      name: product.name,
+                      price: product.price,
+                      image: product.image,
+                    });
+                    toast.success(`${product.name} added to cart!`); // Show toast
+                  }}
+                  className="w-36 bg-eu-purple text-white px-3 py-1 rounded-md absolute top-[-50px] right-3"
+                >
                   Add to Cart
                 </button>
               </div>

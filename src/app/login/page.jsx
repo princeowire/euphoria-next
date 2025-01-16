@@ -108,7 +108,7 @@ const Login = () => {
           </label>
           {error && <p className="text-red-500 text-sm">{error}</p>}
           <div className="flex items-end w-full justify-end">
-            <a href="" className="text-xs">
+            <a href="/forgot" className="text-xs">
               Forget Your Password?
             </a>
           </div>

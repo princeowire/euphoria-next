@@ -2,7 +2,6 @@
 import react from "react"
 import Image from "next/image";
 import { Slider } from "@/components/sliider"
-import { Nav } from "@/components/nav";
 import { BigSaving } from "@/components/big-saving";
 import { MiniStoreMen } from "@/components/mini-store-men";
 import { MiniStoreWmen } from "@/components/mini-store-wmen";
@@ -12,7 +11,7 @@ import Limelights from "@/components/limelight";
 import slideTwo from '../../../public/assets/yellow.webp';
 import purple from '../../../public/assets/purple.webp';
 import knittedJoggers from '../../../public/assets/knitted-joggers.png';
-import fullSleeve from '../../../public/assets/full sleeve.png';
+import fullSleeve from '../../../public/assets/full-sleeve.png';
 import activeTshirt from '../../../public/assets/active T-shirts.png';
 import urbanShirt from '../../../public/assets/urban Shirt.png';
 import leave from '../../../public/assets/leave.webp';
@@ -22,7 +21,6 @@ import hAndm from '../../../public/assets/h and m.png';
 import levis from '../../../public/assets/levis.png';
 import usPolo from '../../../public/assets/us polo.png';
 import pumaLogo from '../../../public/assets/puma.png';
-import { Phooter } from "@/components/footer";
 
 
 export default function Shop() {
@@ -45,7 +43,7 @@ export default function Shop() {
             </div>
 
             <div className='w-fit'>
-              <a href="/product">Explore items</a>
+              <a href="/products">Explore items</a>
               <hr />
             </div>
           </div>
@@ -64,7 +62,7 @@ export default function Shop() {
             </div>
 
             <div className='w-fit'>
-              <a href="/product">Explore items</a>
+              <a href="/products">Explore items</a>
               <hr />
             </div>
           </div>
@@ -127,12 +125,12 @@ export default function Shop() {
 
           <div className='relative'>
 
-            <Image src={leave} alt="" />
+            <Image className="max-sm:w-full" src={leave} alt="" />
 
             <div className="absolute flex flex-col gap-3 text-white top-0 p-14 max-md:p-4 my-auto">
               <h3 className='text-4xl font-bold'>WE MADE YOUR EVERYDAY FASHION BETTER!</h3>
-              <p className='max-w-96 text-lg max-sm:hidden'>In our journey to improve everyday fashion, euphoria presents EVERYDAY wear range - Comfortable & Affordable fashion 24/7</p>
-              <button className='w-fit rounded-xl bg-off-white text-black px-7 py-2 max-sm:hidden'><a href="/product">Shop Now</a></button>
+              <p className='max-w-96 text-lg max-lg:hidden'>In our journey to improve everyday fashion, euphoria presents EVERYDAY wear range - Comfortable & Affordable fashion 24/7</p>
+              <button className='w-fit rounded-xl bg-off-white px-7 py-2 border border-white'><a href="/products">Shop Now</a></button>
             </div>
 
           </div>

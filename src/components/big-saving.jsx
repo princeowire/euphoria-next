@@ -24,14 +24,14 @@ export const BigSaving = () => {
               </div>
 
               <button className="border py-1 px-3 rounded-sm ">
-                <a href="/product">Shop Now</a>
+                <a href="/products">Shop Now</a>
               </button>
             </div>
           </div>
 
         </div>
 
-        <div className="printed-bg w-full rounded-[14px] flex items-center justify-end max-sm:min-w-full ">
+        <div className="printed-bg w-full rounded-[14px] flex items-center justify-end max-sm:hidden ">
 
           <div className=" max-w-44 flex justify-end p-5 ml-28 my-auto gap-4 flex-col text-white">
             <button className="bg-off-black p-2 rounded-md">
@@ -52,13 +52,13 @@ export const BigSaving = () => {
               </div>
 
               <button className="border py-1 px-3 rounded-sm ">
-                <a href="/product">Shop Now</a>
+                <a href="/products">Shop Now</a>
               </button>
             </div>
           </div>
         </div>
 
-        <div className="cargo-bg w-full rounded-[14px] flex items-center justify-end max-sm:min-w-full">
+        <div className="cargo-bg w-full rounded-[14px] flex items-center justify-end max-sm:hidden">
 
           <div className=" max-w-44  flex p-5 ml-32 my-auto gap-4 flex-col">
             <div className="flex flex-col gap-1 text-off-black">
@@ -73,7 +73,7 @@ export const BigSaving = () => {
               </div>
 
               <button className="border border-off-black py-1 px-3 rounded-sm text-off-black">
-                <a href="/product">Shop Now</a>
+                <a href="/products">Shop Now</a>
               </button>
             </div>
           </div>
@@ -81,7 +81,7 @@ export const BigSaving = () => {
 
       </div>
 
-      <div className="flex gap-3 max-sm:flex-wrap max-sm:items-center justify-center">
+      <div className="flex gap-3 max-sm:flex-wrap max-sm:hidden justify-center">
         <div className="w-1/2 flex max-sm:w-full  rounded-[14px] justify-end max-sm:justify-start items-center urban-bg min ">
 
           <div className="max-w-44 flex p-5 right-0 mr-14 max-md:m-0 my-auto gap-6 flex-col">
@@ -97,7 +97,7 @@ export const BigSaving = () => {
               </div>
 
               <button className="border border-off-black py-1 px-3 rounded-sm text-off-black">
-                <a href="/product">Shop Now</a>
+                <a href="/products">Shop Now</a>
               </button>
             </div>
           </div>
@@ -118,7 +118,7 @@ export const BigSaving = () => {
               </div>
 
               <button className="border border-off-black py-1 px-3 rounded-sm text-off-black">
-                <a href="/product">Shop Now</a>
+                <a href="/products">Shop Now</a>
               </button>
             </div>
           </div>

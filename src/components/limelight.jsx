@@ -26,7 +26,7 @@ const Limelights = () => {
                 <a href="" className='text-off-gray'>Jhanvi's Brand</a>
               </div>
 
-              <a href="" className='bg-off-white px-3 py-1 rounded-lg'>$37.00</a>
+              <a href="/products" className='bg-off-white px-3 py-1 rounded-lg'>$37.00</a>
             </div>
           </div>
 
@@ -40,7 +40,7 @@ const Limelights = () => {
                 <a href="" className='text-off-gray'>AS's Brand</a>
               </div>
 
-              <a href="" className='bg-off-white px-3 py-1 rounded-lg'>$37.00</a>
+              <a href="/products" className='bg-off-white px-3 py-1 rounded-lg'>$37.00</a>
             </div>
           </div>
 
@@ -54,7 +54,7 @@ const Limelights = () => {
                 <a href="" className='text-off-gray'>Explore Now</a>
               </div>
 
-              <a href="" className='bg-off-white px-3 py-1 rounded-lg'>$37.00</a>
+              <a href="/products" className='bg-off-white px-3 py-1 rounded-lg'>$37.00</a>
             </div>
           </div>
 
@@ -68,7 +68,7 @@ const Limelights = () => {
                 <a href="" className='text-off-gray'>Explore Now</a>
               </div>
 
-              <a href="" className='bg-off-white px-3 py-1 rounded-lg'>$37.00</a>
+              <a href="/products" className='bg-off-white px-3 py-1 rounded-lg'>$37.00</a>
             </div>
           </div>
 

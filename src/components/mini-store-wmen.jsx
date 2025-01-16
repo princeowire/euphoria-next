@@ -18,10 +18,10 @@ export const MiniStoreWmen = () => {
 
         <div className='py-6 flex flex-col gap-6'>
 
-          <div className='flex gap-2 justify-between max-sm:flex-wrap'>
+          <div className='flex gap-6 justify-between max-sm:flex-wrap'>
 
             <div className='flex flex-col gap-2 max-sm:w-full'>
-              <Image src={womenOne} alt="" />
+              <Image className='max-sm:w-full' src={womenOne} alt="" />
 
               <div className='flex items-center justify-between'>
 
@@ -30,12 +30,12 @@ export const MiniStoreWmen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href="/product"><Image src={rightArrow} alt="" /></a>
+                <a href="/products"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
             <div className='flex flex-col gap-2 max-sm:w-full'>
-              <Image src={womenTwo} alt="" />
+              <Image className='max-sm:w-full' src={womenTwo} alt="" />
 
               <div className='flex items-center justify-between'>
 
@@ -44,12 +44,12 @@ export const MiniStoreWmen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href="/product"><Image src={rightArrow} alt="" /></a>
+                <a href="/products"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
             <div className='flex flex-col gap-2 max-sm:w-full'>
-              <Image src={womenThree} alt="" />
+              <Image className='max-sm:w-full' src={womenThree} alt="" />
 
               <div className='flex items-center justify-between'>
 
@@ -58,12 +58,12 @@ export const MiniStoreWmen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href="/product"><Image src={rightArrow} alt="" /></a>
+                <a href="/products"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
             <div className='flex flex-col gap-2 max-sm:w-full'>
-              <Image src={womenFour} alt="" />
+              <Image className='max-sm:w-full' src={womenFour} alt="" />
 
               <div className='flex items-center justify-between'>
 
@@ -72,7 +72,7 @@ export const MiniStoreWmen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href="/product"><Image src={rightArrow} alt="" /></a>
+                <a href="/products"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 

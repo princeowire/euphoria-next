@@ -22,7 +22,7 @@ export const MiniStoreMen = () => {
 
         <div className='py-6 flex flex-col gap-6'>
 
-          <div className='flex flex-wrap gap-8 max-sm:inline max-sm:justify-normal '>
+          <div className='flex flex-wrap gap-8 max-sm:justify-normal '>
 
             <div className='flex flex-col gap-2 flex-grow flex-shrink-0 basis-48'>
               <Image className='w-full' src={menOne} alt="" />
@@ -34,7 +34,7 @@ export const MiniStoreMen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href="/product"><Image src={rightArrow} alt="" /></a>
+                <a href="/products"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
@@ -48,7 +48,7 @@ export const MiniStoreMen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href="/product"><Image src={rightArrow} alt="" /></a>
+                <a href="/products"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
@@ -62,7 +62,7 @@ export const MiniStoreMen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href="/product"><Image src={rightArrow} alt="" /></a>
+                <a href="/products"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
@@ -76,15 +76,15 @@ export const MiniStoreMen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href="/product"><Image src={rightArrow} alt="" /></a>
+                <a href="/products"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
           </div>
 
-          <div className='flex gap-8 justify-between max-sm:hidden'>
+          <div className='flex gap-8 justify-between max-sm:hidden items-center overflow-scroll'>
 
-            <div className='flex flex-col gap-2 flex-grow flex-shrink-0 basis-48'>
+            <div className='flex flex-col gap-2 flex-grow flex-shrink-0 basis-52'>
               <Image className='w-full' src={menFive} alt="" />
 
               <div className='flex items-center justify-between'>
@@ -94,11 +94,11 @@ export const MiniStoreMen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href="product"><Image src={rightArrow} alt="" /></a>
+                <a href="products"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
-            <div className='flex flex-col gap-2 flex-grow flex-shrink-0 basis-48'>
+            <div className='flex flex-col gap-2 flex-grow flex-shrink-0 basis-52'>
               <Image className='w-full' src={menSix} alt="" />
 
               <div className='flex items-center justify-between'>
@@ -108,11 +108,11 @@ export const MiniStoreMen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href="/product"><Image src={rightArrow} alt="" /></a>
+                <a href="/products"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
-            <div className='flex flex-col gap-2 flex-grow flex-shrink-0 basis-48'>
+            <div className='flex flex-col gap-2 flex-grow flex-shrink-0 basis-52'>
               <Image className='w-full' src={menSeven} alt="" />
 
               <div className='flex items-center justify-between'>
@@ -122,11 +122,11 @@ export const MiniStoreMen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href="/product"><Image src={rightArrow} alt="" /></a>
+                <a href="/products"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
 
-            <div className='flex flex-col gap-2 flex-grow flex-shrink-0 basis-48'>
+            <div className='flex flex-col gap-2 flex-grow flex-shrink-0 basis-52'>
               <Image className='w-full' src={menEight} alt="" />
 
               <div className='flex items-center justify-between'>
@@ -136,7 +136,7 @@ export const MiniStoreMen = () => {
                   <a href="" className='text-off-gray'>Explore Now</a>
                 </div>
 
-                <a href="/product"><Image src={rightArrow} alt="" /></a>
+                <a href="/products"><Image src={rightArrow} alt="" /></a>
               </div>
             </div>
             

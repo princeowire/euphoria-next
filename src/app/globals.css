@@ -86,21 +86,15 @@
 
 @media screen and (max-width: 768px) {
   .link {
-    display: none;
-  }
-
-  .link.show {
     display: flex;
   }
 }
 
 @layer components {
-  .link > a {
-    color: #807D7E;
-  }
 
-  .link > a:hover {
+  .link a:hover {
     font-size: larger;
     font-weight: bold;
+    color: #807D7E;
   }   
 } 

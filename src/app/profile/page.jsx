@@ -1,8 +1,10 @@
 'use client';
+import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import { auth } from '@/lib/firebase/firebase';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
+import spin from '../../../public/assets/spinner.svg';
 
 const Profile = () => {
   const [user, setUser] = useState(null);
@@ -35,16 +37,34 @@ const Profile = () => {
   if (!user) {
     return (
       <div className="flex h-screen items-center justify-center">
-        <p>Loading...</p>
+       <div className="w-full m-auto flex items-center justify-center h-[230px]"><Image src={spin} alt='loading...' /></div>
       </div>
     );
   }
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-96">
-        <h1 className="text-2xl font-bold mb-4">Profile Page</h1>
-        <p className="text-lg mb-6">Welcome, {user.displayName || 'User'}!</p>
+    <div className="flex gap-4 p-16 py-4 max-md:p-4">
+      <div>
+        <div className='flex gap-[10px]'>
+            <div className='w-1 rounded-full h-6 bg-purple-800'></div>
+            <h2>Hello {user.displayName || 'user'} </h2>
+        </div>
+
+        <p className='py-2 text-[10px] text-off-gray'>Welcome To Your Account</p>
+
+        <div> 
+          <p>My Profile</p>
+        </div>
+        
+      </div>
+
+      <div className="bg-white rounded shadow-md w-96">
+        <h2 className="text-1xl font-bold mb-4">My Info</h2>
+
+        <div>
+
+        </div>
+
         <button
           onClick={handleLogout}
           className="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600"
