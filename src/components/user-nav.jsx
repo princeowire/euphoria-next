@@ -6,20 +6,15 @@ import cart from "../../public/assets/cart.png";
 import logo from "../../public/assets/Logo.webp";
 import profileIcon from "../../public/assets/profile icon.png";
 import { usePathname } from "next/navigation";
+import { useCart } from "@/app/CartContext";
 
 export const UserNav = () => {
-  const [carts, setCarts] = useState(0)
   const [menu, setMenu] = useState(false);
 
   const location = usePathname();
 
-  // let hamburger = () => {
-  //   addEventListener("click", () => {
-  //     console.log(menu);
-  //     menu.target.classList.toggle("show");
-  //   });
-
-  // };
+  const { getTotalItems } = useCart();
+  const totalItems = getTotalItems();
 
   return (
     <div className="relative">
@@ -102,9 +97,14 @@ export const UserNav = () => {
                 <a href="/cart">
                   <Image src={cart} alt="" />
                 </a>
-                <p className="h-6 w-6 flex items-center justify-center absolute top-0 left-8 rounded-full bg-red-600 text-white font-semibold text-lg">
-                  {carts}
-                </p>
+
+                {totalItems > 0 && (
+                  <span
+                  className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
+                  >
+                 {totalItems}
+                 </span>
+                )}
               </div>
             </div>
           </div>
@@ -185,7 +185,7 @@ export const UserNav = () => {
           </div>
         </div>
 
-        <div className="nav-profile flex gap-2 max-sm:hidden">
+        <div className="nav-profile flex gap-2 max-md:hidden">
           <a href="/profile">
             <Image src={profileIcon} alt="" />
           </a>
@@ -193,9 +193,15 @@ export const UserNav = () => {
             <a href="/cart">
               <Image src={cart} alt="" />
             </a>
-            <p className="h-6 w-6 flex items-center justify-center absolute top-0 left-8 rounded-full bg-red-600 text-white font-semibold text-lg">
-              {carts}
-            </p>
+
+            {totalItems > 0 && (
+            <span
+              className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
+            >
+              {totalItems}
+            </span>
+          )}
+
           </div>
         </div>
 

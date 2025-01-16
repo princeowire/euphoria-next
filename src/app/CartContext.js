@@ -59,10 +59,14 @@ export const CartProvider = ({ children }) => {
     setCart(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
+
+  const getTotalItems = () => {
+    return cart.reduce((total, item) => total + item.quantity, 0);
+  };  
   
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, getTotalItems }}>
       {children}
     </CartContext.Provider>
   );
