@@ -27,10 +27,10 @@ const Forgot = () => {
 
   return (
     <div className="flex h-screen">
-      <div className="w-1/2 h-full">
+      <div className="w-1/2 max-md:hidden h-full">
         <Image src={signInLadies} className="w-full h-full object-cover" alt="logo" />
       </div>
-      <div className="w-1/2 px-16 py-8 flex flex-col gap-4">
+      <div className="w-1/2 px-16 max-md:w-full max-sm:p-4 py-8 flex flex-col gap-4">
         <div>
           <h2 className="text-2xl font-extrabold">Reset Password</h2>
           <p  className="text-xs mt-2">Enter your email and we'll send you a link to reset your password.</p>

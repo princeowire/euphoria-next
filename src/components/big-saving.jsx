@@ -81,7 +81,7 @@ export const BigSaving = () => {
 
       </div>
 
-      <div className="flex gap-3 max-sm:flex-wrap max-sm:hidden justify-center">
+      <div className="flex gap-3 max-lg:hidden max-sm:flex-wrap max-sm:hidden justify-center">
         <div className="w-1/2 flex max-sm:w-full  rounded-[14px] justify-end max-sm:justify-start items-center urban-bg min ">
 
           <div className="max-w-44 flex p-5 right-0 mr-14 max-md:m-0 my-auto gap-6 flex-col">

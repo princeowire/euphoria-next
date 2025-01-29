@@ -24,8 +24,8 @@ export const UserNav = () => {
         </a>
 
         {menu && (
-          <div className="absolute z-20 w-full p-10 bg-off-black top-0 left-0">
-            <div className="hidden max-md:flex flex-col justify-center items-center gap-3 px-3">
+          <div className="absolute z-20 w-full h-screen p-10 bg-white top-0 left-0">
+            <div className="hidden max-md:flex flex-col justify-center items-center gap-8 px-3">
               {location === "/shop" ? (
                 <p className="w-11 flex items-center justify-center">
                   <a href="/shop" className="text-black font-bold text-[20px]">
@@ -89,7 +89,7 @@ export const UserNav = () => {
               )}
             </div>
 
-            <div className="nav-profile flex justify-center items-center gap-2">
+            <div className="nav-profile flex justify-center items-center my-8 gap-2">
               <a href="/profile">
                 <Image src={profileIcon} alt="" />
               </a>

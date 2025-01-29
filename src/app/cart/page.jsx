@@ -74,7 +74,7 @@ const CartPage = () => {
                 />
                 <div>
                   <h2 className="text-lg font-semibold">{item.name}</h2>
-                  <p>${item.price}</p>
+                  <p>${item.price * item.quantity}</p>
                   <p>Quantity: {item.quantity}</p>
                 </div>
               </div>

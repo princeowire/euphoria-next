@@ -32,7 +32,7 @@ export const Slider = () => {
 
     <SwiperSlide className='relative'>
       <Image src={slideTwo} className='w-full h-lvh max-sm:h-[500px] object-cover' alt="" />
-        <div className='absolute bottom-20 max-sm:bottom-8 pl-24 p-16 max-md:p-4 text-white flex flex-col gap-4'>
+        <div className='absolute bottom-20 max-sm:bottom-8 pl-16 p-16 max-md:p-4 text-white flex flex-col gap-4'>
           <p className='text-2xl'>Sweater / Hoodie</p>
           <p className='text-8xl font-extrabold max-w-screen-md max-sm:text-3xl'>Winter Value Pack</p>
           <p className="text-2xl">Cool / Colorful / Comfy</p>

@@ -29,7 +29,7 @@ const Nav = () => {
   }
 
   return (
-    <div className="bg-white ">
+    <div className="bg-white border-b border-gray-300">
       {isLoggedIn ? <UserNav /> : <Nologin />}
     </div>
   );

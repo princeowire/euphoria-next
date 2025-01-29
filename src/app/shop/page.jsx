@@ -33,7 +33,7 @@ export default function Shop() {
 
         <div className='relative flex items-center'>
 
-          <Image  src={slideTwo} className='w-full' alt="" />
+          <Image  src={slideTwo}  alt="" />
 
           <div className='absolute p-8 flex my-auto flex-col gap-8 max-sm:gap-3 text-white'>
             <p className='font-semibold text-xl'>Low Price</p>
@@ -52,7 +52,7 @@ export default function Shop() {
 
         <div className='relative flex items-center'>
 
-          <Image  src={purple} className='w-full' alt="" />
+          <Image  src={purple} className="object-cover" alt="" />
 
           <div className='absolute p-8 flex my-auto flex-col gap-8 max-sm:gap-3 text-white'>
             <p className='font-semibold text-xl'>Beyoung Presents</p>
@@ -125,7 +125,7 @@ export default function Shop() {
 
           <div className='relative'>
 
-            <Image className="max-sm:w-full" src={leave} alt="" />
+            <Image src={leave} alt="" />
 
             <div className="absolute flex flex-col gap-3 text-white top-0 p-14 max-md:p-4 my-auto">
               <h3 className='text-4xl font-bold'>WE MADE YOUR EVERYDAY FASHION BETTER!</h3>

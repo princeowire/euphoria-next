@@ -54,10 +54,11 @@ const Login = () => {
 
   return (
     <div className="flex h-screen">
-      <div className="w-1/2 h-full">
+      <div className="w-1/2 h-full max-md:hidden">
         <Image src={signInLadies} className="w-full h-full object-cover" alt="logo" />
       </div>
-      <div className="w-1/2 px-16 py-8">
+
+      <div className="w-1/2 max-md:w-full px-16 max-sm:p-4 py-8">
         <div>
           <h2 className="text-2xl font-extrabold">Sign in Page</h2>
         </div>

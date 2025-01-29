@@ -68,7 +68,7 @@ const ProductPage = () => {
 
   return (
     <div>
-      <div className="px-8 py-4 gap-6 flex items-center justify-center flex-wrap">
+      <div className="px-16 max-sm:p-4 py-4 gap-6 flex items-center justify-center flex-wrap">
         {products.map((product) => (
           <div
             key={product.slug.current}

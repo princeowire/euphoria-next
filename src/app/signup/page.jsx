@@ -45,10 +45,10 @@ const handleGoogleSignUp = async () => {
 
   return (
     <div className='flex h-screen'>
-      <div className='w-1/2 h-full'>
+      <div className='w-1/2 max-md:hidden h-full'>
         <Image src={signUpPeople} className='w-full h-full object-cover' alt='logo'/>
       </div>
-      <div  className='w-1/2 px-16 py-8'>
+      <div  className='w-1/2 max-md:w-full max-sm:p-4 px-16 py-8'>
         <div>
           <h2 className='text-2xl font-extrabold'>Sign in Page </h2>
           <p className='text-sm text-gray-400'>Sign up for free to access to in any of our products </p>
@@ -86,7 +86,7 @@ const handleGoogleSignUp = async () => {
             {error && <p className='text-red-500 text-sm'>{error}</p>}
             {success && <p className='text-green-500 text-sm'>{success}</p>}
 
-            <div className='flex flex-col my-4'>
+            <div className='flex gap-2 flex-col my-4'>
               <label htmlFor="agree" className='flex gap-2'><input required type="checkbox" name="" id="agree" />Agree to our Terms of use and Privacy Policy </label>
               <label htmlFor="subcribe" className='flex gap-2'><input required type="checkbox" name="" id="subcribe" />Subscribe to our monthly newsletter </label>
             </div>
