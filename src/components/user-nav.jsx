@@ -26,15 +26,15 @@ export const UserNav = () => {
         {menu && (
           <div className="absolute z-20 w-full h-screen p-10 bg-white top-0 left-0">
             <div className="hidden max-md:flex flex-col justify-center items-center gap-8 px-3">
-              {location === "/shop" ? (
+              {location === "/" ? (
                 <p className="w-11 flex items-center justify-center">
-                  <a href="/shop" className="text-black font-bold text-[20px]">
+                  <a href="/" className="text-black font-bold text-[20px]">
                     Shop
                   </a>
                 </p>
               ) : (
                 <p className="w-11 flex items-center justify-center">
-                  <a href="/shop" className="text-off-gray font-bold text-1xl">
+                  <a href="/" className="text-off-gray font-bold text-1xl">
                     Shop
                   </a>
                 </p>
@@ -111,15 +111,15 @@ export const UserNav = () => {
         )}
 
         <div className="link flex max-md:hidden justify-center items-center gap-3 px-3">
-          {location === "/shop" ? (
+          {location === "/" ? (
             <p className="w-11 flex items-center justify-center">
-              <a href="/shop" className="text-black font-bold text-[20px]">
+              <a href="/" className="text-black font-bold text-[20px]">
                 Shop
               </a>
             </p>
           ) : (
             <p className="w-11 flex items-center justify-center">
-              <a href="/shop" className="text-off-gray font-bold text-1xl">
+              <a href="/" className="text-off-gray font-bold text-1xl">
                 Shop
               </a>
             </p>
