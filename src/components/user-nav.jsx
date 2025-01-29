@@ -62,13 +62,13 @@ export const UserNav = () => {
 
               {location === "/men" ? (
                 <p className="w-11 flex items-center justify-center">
-                  <a href="" className="text-black font-bold text-[20px]">
+                  <a href="/men" className="text-black font-bold text-[20px]">
                     Men
                   </a>
                 </p>
               ) : (
                 <p className="w-11 flex items-center justify-center">
-                  <a href="" className="text-off-gray font-bold text-1xl">
+                  <a href="/men" className="text-off-gray font-bold text-1xl">
                     Men
                   </a>
                 </p>
@@ -76,13 +76,13 @@ export const UserNav = () => {
 
               {location === "/women" ? (
                 <p className="w-11 flex items-center justify-center">
-                  <a href="" className="text-black font-bold text-[20px]">
+                  <a href="/women" className="text-black font-bold text-[20px]">
                     Women
                   </a>
                 </p>
               ) : (
                 <p className="w-11 flex items-center justify-center">
-                  <a href="" className="text-off-gray font-bold text-1xl">
+                  <a href="/women" className="text-off-gray font-bold text-1xl">
                     Women
                   </a>
                 </p>
@@ -147,13 +147,13 @@ export const UserNav = () => {
 
           {location === "/men" ? (
             <p className="w-11 flex items-center justify-center">
-              <a href="" className="text-black font-bold text-[20px]">
+              <a href="/men" className="text-black font-bold text-[20px]">
                 Men
               </a>
             </p>
           ) : (
             <p className="w-11 flex items-center justify-center">
-              <a href="" className="text-off-gray font-bold text-1xl">
+              <a href="/men" className="text-off-gray font-bold text-1xl">
                 Men
               </a>
             </p>
@@ -161,13 +161,13 @@ export const UserNav = () => {
 
           {location === "/women" ? (
             <p className="w-11 flex items-center justify-center">
-              <a href="" className="text-black font-bold text-[20px]">
+              <a href="/women" className="text-black font-bold text-[20px]">
                 Women
               </a>
             </p>
           ) : (
             <p className="w-11 flex items-center justify-center">
-              <a href="" className="text-off-gray font-bold text-1xl">
+              <a href="/women" className="text-off-gray font-bold text-1xl">
                 Women
               </a>
             </p>

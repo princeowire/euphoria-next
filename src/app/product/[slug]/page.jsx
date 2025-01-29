@@ -6,6 +6,8 @@ import securePayment from '../../../../public/assets/secure payment.png';
 import truck from '../../../../public/assets/truck.png';
 import sizeFit from '../../../../public/assets/Size & Fit.png';
 import shippingReturns from '../../../../public/assets/Free Shipping & Returns.png';
+import AddToCartButton from '@/components/add-to-cart';
+import StarRating from '@/components/five-star';
 
 export async function generateStaticParams() {
   const products = await client.fetch(`*[_type == "product"] { "slug": slug.current }`);
@@ -36,7 +38,7 @@ export default async function ProductDetail({ params }) {
 
   return (
     <div>
-      <div className="px-16 flex gap-16">
+      <div className="px-16 max-sm:px-4 flex flex-wrap gap-16 max-sm:gap-8">
         <div className="product-image">
           {product.image ? (
             <Image
@@ -54,16 +56,16 @@ export default async function ProductDetail({ params }) {
           )}
         </div>
 
-        <div className='w-[50%]'>
+        <div className='w-[50%] max-sm:w-full'>
           <Navigation />
-          <h1 className="text-2xl font-bold mb-2">{product.name}</h1>
+          <h1 className="text-2xl font-bold">{product.name}</h1>
           
           <div>
-            rating
+            <StarRating />
           </div>
 
           <div className="flex items-center gap-4">
-            <button className="w-36 bg-eu-purple text-white px-3 py-1 rounded-md">Add to Cart</button>
+            <AddToCartButton  product={product}  />
             <p className="text-center text-gray-700 border border-black w-24 rounded-md">${product.price}</p>
           </div>
 
@@ -76,13 +78,13 @@ export default async function ProductDetail({ params }) {
         </div>
       </div>
 
-      <div className="py-8 px-16 mt-4 flex justify-center">
+      <div className="py-8 px-16 max-sm:p-4 mt-4 flex max-md:flex-wrap justify-center">
         {product.detailedDescription && (
           <div className="">
             <h2 className="text-xl font-bold flex pb-4">
               <div className="w-1 rounded-full h-6 bg-purple-800 mr-1"></div> Product Description
             </h2>
-            <p className="text-base text-gray-700">{product.detailedDescription}</p>
+            <p className="pl-[8px] text-base text-gray-700">{product.detailedDescription}</p>
           </div>
         )}
 
@@ -91,7 +93,7 @@ export default async function ProductDetail({ params }) {
         </div>
       </div>
 
-      <div className="my-8 px-16">
+      <div className="my-8 px-16 max-sm:p-4">
         <h2 className="text-xl font-bold mb-4 flex items-center "><div className="w-1 rounded-full h-6 bg-purple-800 mr-1"></div> Similar Products</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {randomProducts.map((similarProduct) => (
@@ -100,10 +102,10 @@ export default async function ProductDetail({ params }) {
                 <Image
                   src={urlFor(similarProduct.image).url()}
                   alt={similarProduct.name}
-                  width={200}
-                  height={250}
+                  className="w-full object-cover"
+                  width={282}
+                  height={350}
                   loading="lazy"
-                  className="object-cover"
                 />
               )}
               <h3 className="text-lg font-semibold mt-2">{similarProduct.name}</h3>

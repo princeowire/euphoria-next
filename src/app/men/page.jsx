@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { client, urlFor } from '@/lib/sanity';
+import { client, urlFor } from '@/lib/sanity'; // Ensure urlFor is imported correctly
 import Image from 'next/image';
 import Link from 'next/link';
 import spin from '../../../public/assets/spinner.svg';
@@ -9,30 +9,32 @@ import { useCart } from '../CartContext';
 import { toast } from 'react-hot-toast';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
-const ProductPage = () => {
+const Men = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null); // Track authentication state
   const { addToCart } = useCart();
 
+  // Fetch only Men's products from Sanity
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const data = await client.fetch(`
-          *[_type == "product"] {
-            name,
-            slug {
-              current
-            },
-            price,
-            description,
-            image
-          }
+*[_type == "product" && category->title == "men"] {
+  name,
+  slug {
+    current
+  },
+  price,
+  description,
+  image
+}
+
         `);
-        console.log('Fetched products:', data);
+        console.log('Fetched men\'s products:', data);
         setProducts(data);
       } catch (error) {
-        console.error('Error fetching products:', error);
+        console.error('Error fetching men\'s products:', error);
       } finally {
         setLoading(false);
       }
@@ -41,6 +43,7 @@ const ProductPage = () => {
     fetchProducts();
   }, []);
 
+  // Firebase auth listener to set user state
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -50,6 +53,7 @@ const ProductPage = () => {
     return () => unsubscribe(); // Cleanup the listener
   }, []);
 
+  // Show loading spinner while products are being fetched
   if (loading) {
     return (
       <div className="w-full m-auto flex items-center justify-center h-[230px]">
@@ -58,10 +62,11 @@ const ProductPage = () => {
     );
   }
 
+  // If no products are available
   if (!products || products.length === 0) {
     return (
       <div className="w-full m-auto flex items-center justify-center h-[230px]">
-        No products available!
+        No men's products available!
       </div>
     );
   }
@@ -77,7 +82,7 @@ const ProductPage = () => {
             <Link href={`/product/${product.slug.current}`}>
               <Image
                 className="w-full"
-                src={urlFor(product.image).url()}
+                src={urlFor(product.image?.asset).url()} // Access asset for image URL
                 alt={product.name}
                 width={282}
                 height={370}
@@ -123,24 +128,23 @@ const ProductPage = () => {
           <div className="w-1 rounded-full h-6 bg-purple-800 mr-1"></div> Product Description
         </h2>
         <h3 className='pl-[8px] py-2 text-base font-semibold text-gray-800'>
-          Reexplore Clothing Collection Online at Euphoria
+          Reexplore Men's Clothing Collection Online at Euphoria
         </h3>
         <p className="pl-[8px] text-gray-700 text-sm">
-          Clothing – Are you searching for the best website to buy clothing online? Your search ends here. From trendy casual wear to premium quality apparel, Euphoria offers a collection of clothing with the latest and best designs for everyone.
+          Men's Clothing – Are you searching for the best website to buy Men's Clothing online? Your search ends here. From trendy Casual Men's Wear Online shopping to premium quality cotton men's apparel, Euphoria has a collection of Men's Clothing covered with the latest and best designs.
         </p>
         <h3 className='pl-[8px] py-2 text-base font-semibold text-gray-800'>
-          One-Stop Destination to Shop Clothing: Euphoria
+          One-Stop Destination to Shop Every Clothing for Men: Euphoria
         </h3>
         <p className="pl-[8px] text-gray-700 text-sm">
-          Clothing is gaining more popularity every day. With the increasing demand for comfort and style, Euphoria offers a wide range of stylish clothing, making you feel confident wherever you go. Our collection includes everything from casual wear to premium clothing for all.
+          Men's clothing is gaining more popularity every day. With the increasing demand for comfort and style, Euphoria offers a wide range of stylish men's clothing, making you the winner wherever you go. Our collection includes everything from casual wear to premium men's clothing.
         </p>
         <p className="pl-[8px] pt-2 text-gray-700 text-sm">
-          Our clothing collection will make you a trendsetter with the perfect blend of choice, quality, and elegance.
+          Our men's clothing collection will make you the trendsetter with the perfect blend of choice, quality, and elegance. 
         </p>
       </div>
-
     </div>
   );
 };
 
-export default ProductPage;
+export default Men;
