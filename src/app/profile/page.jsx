@@ -64,6 +64,7 @@ const Profile = () => {
 
         <div className="flex flex-col gap-2 px-4 py-2">
           <p>My Profile</p>
+          <p>My Order</p>
 
           <button
             onClick={handleLogout}
