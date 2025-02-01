@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import AddressForm from '@/components/address';
 
 import { auth } from '@/lib/firebase/firebase';
 import { onAuthStateChanged, signOut, updateProfile, updateEmail } from 'firebase/auth';
@@ -15,6 +16,7 @@ const Profile = () => {
   const [user, setUser] = useState(null);
   const [newValue, setNewValue] = useState('');
   const router = useRouter();
+  const [address, setAddress] = useState(false);
 
   // Fetch and listen for authentication state changes
   useEffect(() => {
@@ -210,6 +212,10 @@ const Profile = () => {
             <button onClick={handlePasswordReset} className="text-purple-600">
               Reset Password
             </button>
+          </div>
+
+          <div className='w-full '>
+            <AddressForm />
           </div>
         </div>
       </div>
