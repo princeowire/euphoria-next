@@ -104,6 +104,7 @@ const ProductPage = () => {
                         name: product.name,
                         price: product.price,
                         image: product.image,
+                        description: product.description,
                       });
                       toast.success(`${product.name} added to cart!`); // Show success toast
                     }
