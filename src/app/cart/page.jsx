@@ -6,6 +6,15 @@ import Image from 'next/image';
 import noCart from '../../../public/assets/no-cart.png';
 import spin from '../../../public/assets/spinner.svg';
 import deleteIco from '../../../public/assets/Delete icon.png';
+import imageUrlBuilder from '@sanity/image-url';
+import { client } from '@/lib/sanity';
+
+const builder = imageUrlBuilder(client);
+
+function urlFor(source) {
+  return builder.image(source).url();
+}
+
 
 const CartPage = () => {
   const [user, setUser] = useState(null); // Track the logged-in user
@@ -59,10 +68,11 @@ const CartPage = () => {
   return (
     <div>
         {cart.length === 0 ? (null) : (<div className='w-full bg-off-black py-4 px-16 max-sm:px-4 text-white'>
-         <div className='p-4  grid grid-cols-6'>
+         <div className='p-4  grid grid-cols-7'>
             <p className='col-span-3'>Product Details</p>
             <p>Price</p>
             <p>Quantity</p>
+            <p>Subtotal</p>
             <p className='flex justify-center items-center'>Remove</p>
          </div>
         </div>)}
@@ -89,16 +99,17 @@ const CartPage = () => {
               <div key={index}>
 
                 <li
-                  className="grid grid-cols-6 items-center justify-between p-4 border rounded-lg"
+                  className="grid grid-cols-7 items-center justify-between p-4 border rounded-lg"
                 >
                   {/* Image & Name Section - Takes More Space */}
                   <div className="flex items-center space-x-4 col-span-3">
                     <Image
-                      src={item.image?.url || "/default-image.png"}
+                      src={item.image ? urlFor(item.image) : "/default-image.png"}
                       alt={item.name}
                       width={80}
                       height={100}
                     />
+                    {console.log("Item Image:", item.image)}
                     <div>
                       <h2 className="text-lg font-semibold">{item.name}</h2>
                       <p>{item.description}</p>
@@ -107,7 +118,7 @@ const CartPage = () => {
 
                   {/* Price */}
                   <p className="col-span-1">
-                    ${(item.price * item.quantity).toFixed(2)}
+                    ${(item.price).toFixed(2)}
                   </p>
 
                   {/* Quantity */}
@@ -129,6 +140,10 @@ const CartPage = () => {
                       +
                     </button>
 
+                  </p>
+                  {/* sub total */}
+                  <p className="col-span-1">
+                    ${(item.price * item.quantity).toFixed(2)}
                   </p>
 
                   {/* Buttons Section */}
