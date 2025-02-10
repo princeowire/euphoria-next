@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { FcGoogle } from "react-icons/fc";
-import { FaTwitter } from "react-icons/fa6";
 import { IoEyeOffOutline } from "react-icons/io5";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { auth, googleProvider } from '@/lib/firebase/firebase';
@@ -28,8 +27,12 @@ const Login = () => {
       // Store the token in cookies
       setCookie('authToken', idToken, { maxAge: 3600, path: '/' }); // Expires in 1 hour
 
-      // Redirect to shop page
-      router.push('/');
+      // Get the redirect URL from localStorage or fallback to home page
+      const redirectTo = localStorage.getItem('redirectAfterLogin') || '/';
+      localStorage.removeItem('redirectAfterLogin'); // Remove the redirect URL after use
+
+      // Redirect to the page they were trying to access
+      router.push(redirectTo);
     } catch (err) {
       console.error(err);
       setError('Failed to log in. Please check your credentials.');
@@ -44,8 +47,12 @@ const Login = () => {
       // Store the token in cookies
       setCookie('authToken', idToken, { maxAge: 3600, path: '/' });
 
-      // Redirect to shop page
-      router.push('/shop');
+      // Get the redirect URL from localStorage or fallback to home page
+      const redirectTo = localStorage.getItem('redirectAfterLogin') || '/';
+      localStorage.removeItem('redirectAfterLogin'); // Remove the redirect URL after use
+
+      // Redirect to the page they were trying to access
+      router.push(redirectTo);
     } catch (err) {
       console.error(err);
       setError('Google Sign-In failed. Please try again.');
@@ -69,10 +76,6 @@ const Login = () => {
           >
             <FcGoogle />
             Continue With Google
-          </button>
-          <button className="text-purple-400 border border-black p-2 flex items-center justify-center gap-3 w-full rounded-[5px]">
-            <FaTwitter className="text-blue-300" />
-            Continue With Twitter
           </button>
         </div>
         <form onSubmit={handleLogin} className="flex flex-col gap-4">

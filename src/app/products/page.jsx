@@ -96,18 +96,15 @@ const ProductPage = () => {
                 </p>
                 <button
                   onClick={() => {
-                    if (!user) {
-                      toast.error('You must log in to add items to the cart.'); // Show error toast
-                    } else {
-                      addToCart({
-                        slug: product.slug,
-                        name: product.name,
-                        price: product.price,
-                        image: product.image,
-                        description: product.description,
-                      });
-                      toast.success(`${product.name} added to cart!`); // Show success toast
-                    }
+                    // Proceed with adding the product to the cart, regardless of login status
+                    addToCart({
+                      slug: product.slug,
+                      name: product.name,
+                      price: product.price,
+                      image: product.image,
+                      description: product.description,
+                    });
+                    toast.success(`${product.name} added to cart!`); // Show success toast
                   }}
                   className="w-36 bg-eu-purple text-white px-3 py-1 rounded-md absolute top-[-50px] right-3"
                 >

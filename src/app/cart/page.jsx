@@ -15,7 +15,6 @@ function urlFor(source) {
   return builder.image(source).url();
 }
 
-
 const CartPage = () => {
   const [user, setUser] = useState(null); // Track the logged-in user
   const [loading, setLoading] = useState(true); // Track the loading state
@@ -50,17 +49,6 @@ const CartPage = () => {
         <div className="w-full m-auto flex items-center justify-center h-[230px]">
           <Image src={spin} alt="loading..." />
         </div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return (
-      <div className="flex flex-col items-center justify-center min-h-screen p-8">
-        <p className="text-xl mb-4">You need to log in to view your cart.</p>
-        <button className="px-6 bg-blue-500 text-white py-2 rounded-md">
-          <a href="/login">Go to Login</a>
-        </button>
       </div>
     );
   }
@@ -102,9 +90,7 @@ const CartPage = () => {
                   {/* Image & Name Section - Takes More Space */}
                   <div className="flex items-center space-x-4 col-span-3">
                     <Image
-                      src={
-                        item.image ? urlFor(item.image) : "/default-image.png"
-                      }
+                      src={item.image ? urlFor(item.image) : '/default-image.png'}
                       alt={item.name}
                       width={80}
                       height={100}
@@ -156,9 +142,7 @@ const CartPage = () => {
                   {/* Image & Name Section - Takes More Space */}
                   <div className="flex items-center gap-4 w-full">
                     <Image
-                      src={
-                        item.image ? urlFor(item.image) : "/default-image.png"
-                      }
+                      src={item.image ? urlFor(item.image) : '/default-image.png'}
                       alt={item.name}
                       width={80}
                       height={100}
@@ -206,7 +190,6 @@ const CartPage = () => {
                       </button>
                     </div>
                   </div>
-
                 </li>
               </div>
             ))}
@@ -240,17 +223,23 @@ const CartPage = () => {
         <div className="min-w-[300px] flex flex-col gap-4">
           <div>
             <p>Sub Total: ${calculateSubtotal().toFixed(2)}</p>
-            {cart.length > 0 ? (<p className="mt-2">Shipping fee: ${shippingFee.toFixed(2)}</p>) : (null) }
+            {cart.length > 0 ? (
+              <p className="mt-2">Shipping fee: ${shippingFee.toFixed(2)}</p>
+            ) : null}
           </div>
 
           {cart.length > 0 ? (
             <p className="font-semibold text-xl">
               Grand Total: ${calculateGrandTotal().toFixed(2)}
             </p>
-          ) : (null) }
+          ) : null}
 
           <a href="/checkout" className="mt-4">
-            {cart.length > 0 ? (<button className="bg-eu-purple max-md:w-full text-white px-4 py-2 rounded">  Proceed to Checkout </button>) : (null)}
+            {cart.length > 0 ? (
+              <button className="bg-eu-purple max-md:w-full text-white px-4 py-2 rounded">
+                Proceed to Checkout
+              </button>
+            ) : null}
           </a>
         </div>
       </div>

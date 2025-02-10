@@ -12,6 +12,12 @@ import { useRouter } from "next/navigation"; // Use useRouter from next/navigati
 
 const builder = imageUrlBuilder(client);
 
+const redirectToLogin = () => {
+  // Save the current page URL to localStorage
+  localStorage.setItem('redirectAfterLogin', window.location.pathname);
+  router.push('/login');
+};
+
 function urlFor(source) {
   return builder.image(source).url();
 }
@@ -69,7 +75,7 @@ const CheckoutPage = () => {
       setTimeout(() => {
         setOrderSuccess(false);
         if (isClient) {
-          router.push("/products"); // Redirect after 5 seconds
+          router.push("/"); // Redirect after 5 seconds
         }
       }, 5000); // Hide after 5 seconds
     } catch (error) {

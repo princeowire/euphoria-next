@@ -3,12 +3,10 @@ import Image from 'next/image';
 import React, { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import AddressForm from '@/components/address';
-
 import { auth } from '@/lib/firebase/firebase';
 import { onAuthStateChanged, signOut, updateProfile, updateEmail } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 import { sendPasswordResetEmail } from 'firebase/auth';
-
 import spin from '../../public/assets/spinner.svg';
 
 const MiniProfile = () => {
@@ -20,15 +18,11 @@ const MiniProfile = () => {
   // Fetch and listen for authentication state changes
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-      } else {
-        router.push('/login'); // Redirect to login if user is not authenticated
-      }
+      setUser(currentUser); // Set user regardless of authentication status
     });
 
     return () => unsubscribe();
-  }, [router]);
+  }, []);
 
   const handleUpdate = async () => {
     if (!newValue.trim()) return;
@@ -50,10 +44,10 @@ const MiniProfile = () => {
 
   const handlePasswordReset = async () => {
     if (!user?.email) {
-      toast.error("No email found for this user Pls add email.");
+      toast.error("No email found for this user. Please add an email.");
       return;
     }
-  
+
     toast(
       (t) => (
         <div>
@@ -86,16 +80,6 @@ const MiniProfile = () => {
       { duration: 5000 }
     );
   };
-
-  if (!user) {
-    return (
-      <div className="flex h-screen items-center justify-center">
-        <div className="w-full flex items-center justify-center h-[230px]">
-          <Image src={spin} alt="loading..." />
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="flex max-sm:flex-col gap-16">
@@ -140,7 +124,7 @@ const MiniProfile = () => {
           <div className="py-1 flex items-center justify-between border-b border-gray-200">
             <span>
               <p className="text-sm text-gray-500">Your Name</p>
-              <p className="text-lg">{user.displayName || "Not Set"}</p>
+              <p className="text-lg">{user?.displayName || "Not Set"}</p>
             </span>
             <button
               onClick={() => setPopup({ open: true, field: "Name" })}
@@ -154,7 +138,7 @@ const MiniProfile = () => {
           <div className="py-1 flex items-center justify-between border-b border-gray-200">
             <span>
               <p className="text-sm text-gray-500">Email Address</p>
-              <p className="text-lg">{user.email}</p>
+              <p className="text-lg">{user?.email || "Not Set"}</p>
             </span>
             <button
               onClick={() => setPopup({ open: true, field: "Email" })}
@@ -184,7 +168,7 @@ const MiniProfile = () => {
             </button>
           </div>
 
-          <div className='w-full '>
+          <div className="w-full">
             <AddressForm />
           </div>
         </div>
