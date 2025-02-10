@@ -18,7 +18,7 @@ export const UserNav = () => {
   const totalItems = getTotalItems();
 
   return (
-    <div className="relative">
+    <div className="relative max-w-[1400px] w-full">
       <div className="flex justify-between items-center px-8 max-sm:px-1 max-sm:py-2 py-4 w-full">
         <a href="/">
           <Image src={logo} alt="" className="" />

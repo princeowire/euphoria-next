@@ -122,11 +122,11 @@ export default function Shop() {
 
         <section className='px-16 py-8 max-md:p-6 max-sm:p-4'>
 
-          <div className='flex max-md:flex-wrap py-4'>
+          <div className='flex w-full items-center justify-center max-md:flex-wrap py-4'>
 
-            <div className='relative'>
+            <div className='relative max-md:w-full w-[50%]'>
 
-              <Image src={leave} alt="" />
+              <Image src={leave} className="w-full h-[600px]" alt="" />
 
               <div className="absolute flex flex-col gap-3 text-white top-0 p-14 max-md:p-4 my-auto">
                 <h3 className='text-4xl font-bold'>WE MADE YOUR EVERYDAY FASHION BETTER!</h3>
@@ -136,7 +136,7 @@ export default function Shop() {
 
             </div>
 
-            <div className='max-md:hidden'><Image src={models} alt="" /></div>
+            <div className='max-md:hidden w-[50%]'><Image className="w-full h-[600px]" src={models} alt="" /></div>
 
           </div>
 

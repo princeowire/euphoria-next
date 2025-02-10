@@ -98,7 +98,7 @@ p {
 @layer components {
 
   .link a:hover {
-    font-size: larger;
+    font-size: 20px;
     font-weight: bold;
     color: #807D7E;
   }   
