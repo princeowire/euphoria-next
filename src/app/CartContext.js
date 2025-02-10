@@ -36,16 +36,33 @@ export const CartProvider = ({ children }) => {
   // ✅ Fetch Cart from Firestore
   const fetchCart = async (uid) => {
     if (!uid) return;
-    const cartRef = doc(db, "carts", uid);
-    const cartSnap = await getDoc(cartRef);
-    if (cartSnap.exists()) {
-      setCart(cartSnap.data().items);
-      localStorage.setItem('cart', JSON.stringify(cartSnap.data().items)); // Save cart to localStorage
-    } else {
-      setCart([]);
-      localStorage.setItem('cart', JSON.stringify([])); // Save empty cart to localStorage
+  
+    try {
+      const cartRef = doc(db, "carts", uid);
+      const cartSnap = await getDoc(cartRef);
+      
+      if (cartSnap.exists()) {
+        setCart(cartSnap.data().items);
+        localStorage.setItem('cart', JSON.stringify(cartSnap.data().items));
+      } else {
+        setCart([]);
+        localStorage.setItem('cart', JSON.stringify([])); // Empty cart
+      }
+    } catch (error) {
+      if (error.message.includes('offline')) {
+        console.error('App is offline, showing cached cart data.');
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+          setCart(JSON.parse(savedCart));
+        } else {
+          setCart([]);
+        }
+      } else {
+        console.error("Unexpected error while fetching cart:", error);
+      }
     }
   };
+  
 
   // ✅ Save Cart to Firestore
   const saveCartToFirestore = async (updatedCart) => {
@@ -113,16 +130,29 @@ export const CartProvider = ({ children }) => {
     return cart.reduce((total, item) => total + item.quantity, 0);
   };
 
-  // ✅ Clear Cart
-  const clearCart = async () => {
-    setCart([]);
-    localStorage.setItem('cart', JSON.stringify([])); // Clear localStorage immediately
+// ✅ Clear Cart
+const clearCart = async () => {
+  console.log("Clearing cart...");
 
-    if (userId) {
+  // Clear cart state locally
+  setCart([]);
+  
+  // Clear cart from localStorage
+  localStorage.setItem('cart', JSON.stringify([])); 
+  console.log("Cart cleared from localStorage");
+
+  if (userId) {
+    try {
+      // Clear cart from Firestore
       const cartRef = doc(db, "carts", userId);
-      await setDoc(cartRef, { items: [] }, { merge: true }); // Update Firestore afterward
+      await setDoc(cartRef, { items: [] }, { merge: true });
+      console.log("Cart cleared from Firestore");
+    } catch (error) {
+      console.error("Error clearing cart from Firestore:", error);
     }
-  };
+  }
+};
+
 
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, increaseQuantity, decreaseQuantity, getTotalItems, clearCart }}>

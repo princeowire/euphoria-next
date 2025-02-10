@@ -10,6 +10,7 @@ import { useCart } from "@/app/CartContext";
 
 export const UserNav = () => {
   const [menu, setMenu] = useState(false);
+  const [order, setOrder] = useState([])
 
   const location = usePathname();
 
@@ -18,7 +19,7 @@ export const UserNav = () => {
 
   return (
     <div className="relative">
-      <div className="flex justify-between px-8 max-sm:px-1 max-sm:py-2 py-4 w-full">
+      <div className="flex justify-between items-center px-8 max-sm:px-1 max-sm:py-2 py-4 w-full">
         <a href="/">
           <Image src={logo} alt="" className="" />
         </a>
@@ -99,18 +100,16 @@ export const UserNav = () => {
                 </a>
 
                 {totalItems > 0 && (
-                  <span
-                  className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
-                  >
-                 {totalItems}
-                 </span>
+                  <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                    {totalItems}
+                  </span>
                 )}
               </div>
             </div>
           </div>
         )}
 
-        <div className="link flex max-md:hidden justify-center items-center gap-3 px-3">
+        <div className="link flex max-md:hidden justify-center items-center gap-5 px-3">
           {location === "/" ? (
             <p className="w-11 flex items-center justify-center">
               <a href="/" className="text-black font-bold text-[20px]">
@@ -127,19 +126,13 @@ export const UserNav = () => {
 
           {location === "/products" ? (
             <p className="w-16 flex items-center justify-center">
-              <a
-                href="/products"
-                className="text-black font-bold text-[20px]"
-              >
+              <a href="/products" className="text-black font-bold text-[20px]">
                 Product
               </a>
             </p>
           ) : (
             <p className="w-16 flex items-center justify-center">
-              <a
-                href="/products"
-                className="text-off-gray font-bold text-1xl"
-              >
+              <a href="/products" className="text-off-gray font-bold text-1xl">
                 Product
               </a>
             </p>
@@ -174,11 +167,11 @@ export const UserNav = () => {
           )}
         </div>
 
-        <div className=" max-sm:hidden border border-off-gray flex rounded-md align-middle items-center justify-center px-4 bg-off-white">
-          <div className="flex items-center justify-center gap-2">
+        <div className="h-full max-sm:hidden border border-off-gray flex rounded-md align-middle items-center justify-center px-4 bg-off-white">
+          <div className="flex items-center justify-center gap-2 h-full">
             <Image src={searchIcon} alt="" />
             <input
-              className="bg-off-white outline-none"
+              className="bg-off-white outline-none py-2"
               placeholder="Search"
               type="text"
             />
@@ -195,23 +188,26 @@ export const UserNav = () => {
             </a>
 
             {totalItems > 0 && (
-            <span
-              className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center"
-            >
-              {totalItems}
-            </span>
-          )}
-
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
           </div>
         </div>
 
         <div
           onClick={() => setMenu(!menu)}
-          className="hidden ham-ico cursor-pointer max-md:flex flex-col justify-center items-center z-50"
+          className="hidden w-7 h-6 max-md:flex flex-col justify-between items-center cursor-pointer z-50"
         >
-          <div className="w-6 h-1 bg-black"></div>
-          <div className="w-6 h-1 bg-black my-1"></div>
-          <div className="w-6 h-1 bg-black"></div>
+          <div
+            className={`w-full h-1 bg-black transition-transform ${menu ? "rotate-45 translate-y-2" : ""}`}
+          ></div>
+          <div
+            className={`w-full h-1 bg-black transition-opacity ${menu ? "opacity-0" : ""}`}
+          ></div>
+          <div
+            className={`w-full h-1 bg-black transition-transform ${menu ? "-rotate-45 -translate-y-2" : ""}`}
+          ></div>
         </div>
       </div>
     </div>

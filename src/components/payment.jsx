@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 
-const PaystackButton = ({ email, amount, onSuccess }) => {
+const PaystackButton = ({ email, amount, onSuccess, clearCart, name }) => {
   useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://js.paystack.co/v1/inline.js";
@@ -19,6 +19,11 @@ const PaystackButton = ({ email, amount, onSuccess }) => {
       return;
     }
 
+    if (!name) {
+      alert("Please enter your name before proceeding to payment.");
+      return;
+    }
+
     const handler = window.PaystackPop.setup({
       key: "pk_test_6107d1f839ef7f6ce2b4eedd4c5ce71112246459", // Replace with your actual Paystack public key
       email,
@@ -27,6 +32,13 @@ const PaystackButton = ({ email, amount, onSuccess }) => {
       callback: function (response) {
         alert("Payment Successful! Reference: " + response.reference);
         console.log("Payment successful", response);
+
+        // Empty the cart after payment
+        if (clearCart) {
+          clearCart(); // Clear the cart by calling the passed function
+        }
+
+        // Call the function passed as a prop (onSuccess)
         if (onSuccess) {
           onSuccess(response); // Call the function passed as a prop
         }

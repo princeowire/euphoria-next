@@ -67,17 +67,18 @@ const CartPage = () => {
 
   return (
     <div>
-        {cart.length === 0 ? (null) : (<div className='w-full bg-off-black py-4 px-16 max-sm:px-4 text-white'>
-         <div className='p-4  grid grid-cols-7'>
-            <p className='col-span-3'>Product Details</p>
+      {cart.length === 0 ? null : (
+        <div className="w-full max-md:hidden bg-off-black py-4 px-16 max-sm:px-4 text-white">
+          <div className="p-4  grid grid-cols-7">
+            <p className="col-span-3">Product Details</p>
             <p>Price</p>
             <p>Quantity</p>
             <p>Subtotal</p>
-            <p className='flex justify-center items-center'>Remove</p>
-         </div>
-        </div>)}
+            <p className="flex justify-center items-center">Remove</p>
+          </div>
+        </div>
+      )}
       <div className="px-16 max-sm:px-4">
-
         {cart.length === 0 ? (
           <div className="w-full m-auto flex flex-col items-center justify-center p-5">
             <Image src={noCart} alt="no items" />
@@ -97,19 +98,17 @@ const CartPage = () => {
           <ul className="py-4">
             {cart.map((item, index) => (
               <div key={index}>
-
-                <li
-                  className="grid grid-cols-7 items-center justify-between p-4 border rounded-lg"
-                >
+                <li className="grid max-md:hidden grid-cols-7 items-center justify-between p-4 border rounded-lg">
                   {/* Image & Name Section - Takes More Space */}
                   <div className="flex items-center space-x-4 col-span-3">
                     <Image
-                      src={item.image ? urlFor(item.image) : "/default-image.png"}
+                      src={
+                        item.image ? urlFor(item.image) : "/default-image.png"
+                      }
                       alt={item.name}
                       width={80}
                       height={100}
                     />
-                    {console.log("Item Image:", item.image)}
                     <div>
                       <h2 className="text-lg font-semibold">{item.name}</h2>
                       <p>{item.description}</p>
@@ -117,13 +116,10 @@ const CartPage = () => {
                   </div>
 
                   {/* Price */}
-                  <p className="col-span-1">
-                    ${(item.price).toFixed(2)}
-                  </p>
+                  <p className="col-span-1">${item.price.toFixed(2)}</p>
 
                   {/* Quantity */}
                   <p className="col-span-1">
-                 
                     <button
                       onClick={() => decreaseQuantity(item.slug.current)}
                       className="p-2"
@@ -139,7 +135,6 @@ const CartPage = () => {
                     >
                       +
                     </button>
-
                   </p>
                   {/* sub total */}
                   <p className="col-span-1">
@@ -152,9 +147,66 @@ const CartPage = () => {
                       onClick={() => removeFromCart(item.slug.current)}
                       className=""
                     >
-                      <Image alt='delete' src={deleteIco} />
+                      <Image alt="delete" src={deleteIco} />
                     </button>
                   </div>
+                </li>
+
+                <li className="max-md:flex flex-wrap hidden grid-cols-7 items-center justify-between p-4 border rounded-lg">
+                  {/* Image & Name Section - Takes More Space */}
+                  <div className="flex items-center gap-4 w-full">
+                    <Image
+                      src={
+                        item.image ? urlFor(item.image) : "/default-image.png"
+                      }
+                      alt={item.name}
+                      width={80}
+                      height={100}
+                    />
+                    <div>
+                      <h2 className="text-lg font-semibold">{item.name}</h2>
+                      <p>{item.description}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center justify-between gap-4 w-full mt-2">
+                    {/* Price */}
+                    <p className="col-span-1">${item.price.toFixed(2)}</p>
+
+                    {/* Quantity */}
+                    <p className="col-span-1">
+                      <button
+                        onClick={() => decreaseQuantity(item.slug.current)}
+                        className="p-2"
+                      >
+                        -
+                      </button>
+
+                      <span className="w-6">{item.quantity}</span>
+
+                      <button
+                        onClick={() => increaseQuantity(item.slug.current)}
+                        className="p-2"
+                      >
+                        +
+                      </button>
+                    </p>
+                    {/* sub total */}
+                    <p className="col-span-1">
+                      ${(item.price * item.quantity).toFixed(2)}
+                    </p>
+
+                    {/* Buttons Section */}
+                    <div className="flex items-center justify-center col-span-1">
+                      <button
+                        onClick={() => removeFromCart(item.slug.current)}
+                        className=""
+                      >
+                        <Image alt="delete" src={deleteIco} />
+                      </button>
+                    </div>
+                  </div>
+
                 </li>
               </div>
             ))}
@@ -178,7 +230,7 @@ const CartPage = () => {
             </button>
           </div>
 
-          <a href="/shop" className='mt-6'>
+          <a href="/" className="mt-6">
             <button className="border border-off-gray text-off-gray w-fit max-md:w-full text-sm py-1 px-3 rounded-[10px]">
               Countinue Shopping
             </button>
@@ -188,16 +240,17 @@ const CartPage = () => {
         <div className="min-w-[300px] flex flex-col gap-4">
           <div>
             <p>Sub Total: ${calculateSubtotal().toFixed(2)}</p>
-            <p className="mt-2">Shipping fee: ${shippingFee.toFixed(2)}</p>
+            {cart.length > 0 ? (<p className="mt-2">Shipping fee: ${shippingFee.toFixed(2)}</p>) : (null) }
           </div>
-          <p className="font-semibold text-xl">
-            Grand Total: ${calculateGrandTotal().toFixed(2)}
-          </p>
+
+          {cart.length > 0 ? (
+            <p className="font-semibold text-xl">
+              Grand Total: ${calculateGrandTotal().toFixed(2)}
+            </p>
+          ) : (null) }
 
           <a href="/checkout" className="mt-4">
-            <button className="bg-eu-purple max-md:w-full text-white px-4 py-2 rounded">
-              Proceed to Checkout
-            </button>
+            {cart.length > 0 ? (<button className="bg-eu-purple max-md:w-full text-white px-4 py-2 rounded">  Proceed to Checkout </button>) : (null)}
           </a>
         </div>
       </div>

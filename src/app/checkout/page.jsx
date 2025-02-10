@@ -1,12 +1,14 @@
 "use client";
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { useCart } from "@/app/CartContext";
 import Image from "next/image";
 import imageUrlBuilder from "@sanity/image-url";
 import { client } from "@/lib/sanity";
 import PaystackButton from "@/components/payment";
-// import { db, collection, addDoc } from "@/lib/firebase/firebase"; 
-import { db, collection, addDoc } from "@/lib/firebase/firebase";
+import { toast } from "react-hot-toast";
+import OrderSucessful from "@/components/order-sucessful";
+import { useRouter } from "next/navigation"; // Use useRouter from next/navigation
 
 const builder = imageUrlBuilder(client);
 
@@ -15,7 +17,8 @@ function urlFor(source) {
 }
 
 const CheckoutPage = () => {
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
+  const [orders, setOrders] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,29 +27,24 @@ const CheckoutPage = () => {
     zip: "",
   });
 
+  const [orderSuccess, setOrderSuccess] = useState(false); // State to track order success message
   const shippingFee = 5.0;
-  const subtotal = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
+  const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
   const grandTotal = subtotal + shippingFee;
 
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const [isClient, setIsClient] = useState(false); // Track if component is rendered on client
+
+  const router = useRouter(); // Now this will use the correct useRouter for the App Router
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
-  const handleCheckout = () => {
-    alert("Order Placed Successfully!");
-  };
-
-  const handlePaymentSuccess = async (response) => {
-    console.log("Payment Successful!", response);
-    alert("Order Placed Successfully! Payment Reference: " + response.reference);
-
+  const handlePaymentSuccess = (response) => {
+    toast.success(`Order Placed Successfully! Reference: ${response.reference}`);
     try {
-      // Save order in Firestore
-      const orderRef = collection(db, "orders");
-      await addDoc(orderRef, {
+      const newOrder = {
         name: formData.name,
         email: formData.email,
         address: formData.address,
@@ -56,146 +54,98 @@ const CheckoutPage = () => {
         totalAmount: grandTotal,
         paymentReference: response.reference,
         status: "Paid",
-        createdAt: new Date(),
-      });
+        createdAt: new Date().toISOString(),
+      };
 
-      console.log("Order saved in Firestore!");
+      // Save order to local storage
+      const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
+      const updatedOrders = [...existingOrders, newOrder];
+      localStorage.setItem("orders", JSON.stringify(updatedOrders));
 
-      // Clear the cart after successful payment
       clearCart();
+
+      // Show success message and hide after 5 seconds
+      setOrderSuccess(true);
+      setTimeout(() => {
+        setOrderSuccess(false);
+        if (isClient) {
+          router.push("/products"); // Redirect after 5 seconds
+        }
+      }, 5000); // Hide after 5 seconds
     } catch (error) {
       console.error("Error saving order:", error);
-      alert("An error occurred while processing your order.");
+      toast.error("An error occurred while processing your order.");
     }
   };
 
+  useEffect(() => {
+    // Set client-side rendering flag to true after the first render
+    setIsClient(true);
+
+    // Fetch orders from local storage
+    const savedOrders = JSON.parse(localStorage.getItem("orders")) || [];
+    setOrders(savedOrders);
+  }, []);
+
   return (
-    <div className="px-16 max-sm:px-4 py-8 mx-auto">
+    <div className="px-4 sm:px-8 py-8 mx-auto">
       <h1 className="text-2xl font-bold mb-6">Checkout</h1>
 
-      <div className="flex gap-3 w-full">
-        {/* Billing Details */}
-        <form className=" p-4 rounded-lg w-4/6">
-          <div>
-            <h2 className="text-lg font-semibold mb-4">Billing Details</h2>
-            <input
-              type="text"
-              name="name"
-              placeholder="Full Name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className="border w-full p-2 rounded mb-3"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="border w-full p-2 rounded mb-3"
-            />
-            <input
-              type="text"
-              name="address"
-              placeholder="Address"
-              value={formData.address}
-              onChange={handleInputChange}
-              className="border w-full p-2 rounded mb-3"
-            />
-            <input
-              type="text"
-              name="city"
-              placeholder="City"
-              value={formData.city}
-              onChange={handleInputChange}
-              className="border w-full p-2 rounded mb-3"
-            />
-            <input
-              type="text"
-              name="zip"
-              placeholder="ZIP Code"
-              value={formData.zip}
-              onChange={handleInputChange}
-              className="border w-full p-2 rounded mb-3"
-            />
-          </div>
+      {orderSuccess && (
+        <div className="fixed top-0 left-0">
+          <OrderSucessful />
+        </div>
+      )}
 
-          <div className="mt-6">
-            <h2 className="text-lg font-semibold mb-4">Shipping Details</h2>
+      <div className="flex flex-wrap gap-[1%]">
+        <form className="rounded-lg w-[49%] max-md:w-full">
+          <h2 className="text-lg font-semibold mb-4">Billing Details</h2>
+          {["name", "email", "address", "city", "zip"].map((field) => (
             <input
+              key={field}
               type="text"
-              name="name"
-              placeholder="Full Name"
-              value={formData.name}
+              name={field}
+              placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
+              value={formData[field]}
               onChange={handleInputChange}
               className="border w-full p-2 rounded mb-3"
             />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="border w-full p-2 rounded mb-3"
-            />
-          </div>
-
-          <div className="mt-6">
-            <h2 className="text-lg font-semibold mb-4">Shipping Address</h2>
-            <div className="bg-gray-200 p-2 rounded-md">
-              <label className="flex items-center gap-2"><input type="radio" name="same"/> <p>same as biling</p></label>
-              <hr className="bg-black"/>
-              <label className="flex items-center gap-2"><input type="radio" name="same"/> <p>Use a diffrent address</p> </label>
-            </div>
-          </div>
+          ))}
         </form>
 
-        {/* Order Summary */}
-        <div className="border p-4 rounded-lg w-2/6">
+        <div className="border p-4 rounded-lg w-[49%] max-md:w-full mt-6">
           <h2 className="text-lg font-semibold mb-4">Order Summary</h2>
-          {cart.length === 0 ? (
-            <p>Your cart is empty.</p>
-          ) : (
+          {cart.length > 0 ? (
             cart.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center justify-between py-2 border-b"
-              >
-                <div className="flex items-center space-x-4">
+              <div key={index} className="flex py-2 border-b">
+                <div className="flex gap-2 w-full">
                   <Image
                     src={item.image ? urlFor(item.image) : "/default-image.png"}
                     alt={item.name || "Product Image"}
                     width={50}
                     height={60}
                   />
-                  <div>
-                    <p className="font-medium text-sm">
+                  <p className="flex gap-4 justify-between w-full">
+                    <span>
                       {item.name} × {item.quantity}
-                    </p>
-                  </div>
+                    </span>
+                    <span>${(item.price * item.quantity).toFixed(2)}</span>
+                  </p>
                 </div>
-                <p>${(item.price * item.quantity).toFixed(2)}</p>
               </div>
             ))
+          ) : (
+            <p>Your cart is empty.</p>
           )}
           <p className="mt-4">Subtotal: ${subtotal.toFixed(2)}</p>
           <p>Shipping Fee: ${shippingFee.toFixed(2)}</p>
-          <p className="font-bold text-lg mt-6">
-            Total: ${grandTotal.toFixed(2)}
-          </p>
+          <p className="font-bold text-lg mt-6">Total: ${grandTotal.toFixed(2)}</p>
         </div>
       </div>
 
-      {/* Checkout Button */}
-      <button
-        className="w-full mt-6 bg-eu-purple text-white py-2 rounded"
-        onClick={handleCheckout}
-      >
-        Place Order
-      </button>
-
       <PaystackButton
         email={formData.email}
+        name={formData.name}
         amount={grandTotal}
         onSuccess={handlePaymentSuccess}
       />
