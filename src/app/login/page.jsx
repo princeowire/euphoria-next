@@ -29,7 +29,7 @@ const Login = () => {
       setCookie('authToken', idToken, { maxAge: 3600, path: '/' }); // Expires in 1 hour
 
       // Redirect to shop page
-      router.push('/shop');
+      router.push('/');
     } catch (err) {
       console.error(err);
       setError('Failed to log in. Please check your credentials.');
