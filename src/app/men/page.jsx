@@ -72,12 +72,12 @@ const Men = () => {
   }
 
   return (
-    <div>
+    <div className='max-w-[1400px] mx-auto'>
       <div className="px-16 max-sm:p-4 py-4 gap-6 flex items-center justify-center flex-wrap">
         {products.map((product) => (
           <div
             key={product.slug.current}
-            className="flex flex-col gap-2 max-sm:w-full cursor-pointer"
+            className="flex flex-col gap-2 cursor-pointer shrink-0 grow basis-[23%]"
           >
             <Link href={`/product/${product.slug.current}`}>
               <Image

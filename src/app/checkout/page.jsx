@@ -94,7 +94,7 @@ const CheckoutPage = () => {
   }, []);
 
   return (
-    <div className="px-4 sm:px-8 py-8 mx-auto">
+    <div className="px-4 sm:px-8 py-8 max-w-[1400px] mx-auto">
       <h1 className="text-2xl font-bold mb-6">Checkout</h1>
 
       {orderSuccess && (

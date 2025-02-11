@@ -54,7 +54,7 @@ const CartPage = () => {
   }
 
   return (
-    <div>
+    <div className='max-w-[1400px] mx-auto'>
       {cart.length === 0 ? null : (
         <div className="w-full max-md:hidden bg-off-black py-4 px-16 max-sm:px-4 text-white">
           <div className="p-4  grid grid-cols-7">

@@ -67,33 +67,29 @@ const ProductPage = () => {
   }
 
   return (
-    <div>
-      <div className="px-16 max-sm:p-4 py-4 gap-6 flex items-center justify-center flex-wrap">
+    <div className='max-w-[1400px] mx-auto'>
+      <div className="px-16 max-sm:p-4 py-4 gap-6 flex flex-wrap justify-center">
         {products.map((product) => (
           <div
             key={product.slug.current}
-            className="flex flex-col gap-2 max-sm:w-full cursor-pointer"
+            className="flex flex-col gap-2 cursor-pointer shrink-0 grow basis-[23%]"
           >
             <Link href={`/product/${product.slug.current}`}>
               <Image
-                className="w-full"
+                className="w-full h-72 rounded-lg"
                 src={urlFor(product.image).url()}
                 alt={product.name}
                 width={282}
                 height={370}
               />
             </Link>
-            <div className="flex items-center justify-between relative">
+            <div className="flex flex-col justify-between h-full mt-4">
               <div>
-                <p className="text-1xl font-bold truncate max-w-48">
-                  {product.name}
-                </p>
-                <p className="text-off-gray">{product.description}</p>
+                <p className="text-xl font-bold truncate">{product.name}</p>
+                <p className="text-off-gray text-sm">{product.description}</p>
               </div>
-              <div>
-                <p className="bg-off-white px-3 py-1 rounded-lg">
-                  ${product.price}
-                </p>
+              <div className="flex items-center justify-between mt-2">
+                <p className="bg-off-white px-3 py-1 rounded-lg">${product.price}</p>
                 <button
                   onClick={() => {
                     // Proceed with adding the product to the cart, regardless of login status
@@ -106,7 +102,7 @@ const ProductPage = () => {
                     });
                     toast.success(`${product.name} added to cart!`); // Show success toast
                   }}
-                  className="w-36 bg-eu-purple text-white px-3 py-1 rounded-md absolute top-[-50px] right-3"
+                  className="w-36 bg-eu-purple text-white px-3 py-1 rounded-md"
                 >
                   Add to Cart
                 </button>
@@ -136,7 +132,6 @@ const ProductPage = () => {
           Our clothing collection will make you a trendsetter with the perfect blend of choice, quality, and elegance.
         </p>
       </div>
-
     </div>
   );
 };

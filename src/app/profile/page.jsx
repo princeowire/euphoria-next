@@ -32,7 +32,8 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex max-[789px]:flex-wrap gap-4 p-16 py-4 max-md:p-4">
+    <div className="max-w-[1400px] mx-auto"> 
+          <div className="flex max-[789px]:flex-wrap gap-4 p-16 py-4 max-md:p-4">
       {/* Sidebar */}
       <div className="w-1/4 max-md:w-full pt-8">
         <div className="flex gap-2">
@@ -84,6 +85,7 @@ const Profile = () => {
         {tab === 'profile' && <MiniProfile />}
         {tab === 'orders' && <Orders />}
       </div>
+    </div>
     </div>
   );
 };
